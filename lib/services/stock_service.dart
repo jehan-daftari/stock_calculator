@@ -5,7 +5,7 @@ class StockService {
   final String apiKey = 'VTKTBY56ZXZYIVH8';
 
   Future<List<String>> fetchAvailableSymbols() async {
-    await Future.delayed(Duration(seconds: 1)); // Simulating async delay
+    await Future.delayed(Duration(seconds: 1)); 
     return ['AAPL', 'GOOGL', 'AMZN', 'TSLA', 'MSFT']; // Example list
   }
 

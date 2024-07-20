@@ -48,7 +48,7 @@ class StockProvider with ChangeNotifier {
           profitOrLoss: profitOrLoss,
         );
 
-        _errorMessage = null; // Clear any previous errors
+        _errorMessage = null;
       } else {
         _errorMessage = 'Failed to fetch stock data for calculation.';
         _stockReturn = null;

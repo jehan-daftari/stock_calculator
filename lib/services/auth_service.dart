@@ -6,7 +6,7 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn(
     clientId: kIsWeb
-        ? 'YOUR_WEB_CLIENT_ID.apps.googleusercontent.com' // Replace with your web client ID
+        ? '363661621045-fjivhkcf2i80u89858q96cis4ij3cln8.apps.googleusercontent.com'
         : null,
   );
 
