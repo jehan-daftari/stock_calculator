@@ -42,13 +42,13 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        initialRoute: '/', // Comment out initialRoute
+        /* initialRoute: '/', // Comment out initialRoute
         routes: {
           '/': (context) => LoginScreen(),
           '/sign-up': (context) => SignUpScreen(),
           '/home': (context) => HomeScreen(),
-        },
-        //home: HomeScreen(), // Directly set the home screen//
+        },*/
+        home: HomeScreen(), // Directly set the home screen//
       ),
     );
   }

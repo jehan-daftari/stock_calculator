@@ -28,15 +28,12 @@ class StockProvider with ChangeNotifier {
       final purchaseData = await _stockService.fetchStockData(symbol, purchaseDate);
       final sellData = await _stockService.fetchStockData(symbol, sellDate);
 
-      if (purchaseData != null && purchaseData.containsKey('error')) {
-        _errorMessage = 'Rate limit exceeded. Please try again later.';
+      if (purchaseData == null || sellData == null) {
+        _errorMessage = 'Failed to fetch stock data for calculation.';
         _stockReturn = null;
-      } else if (sellData != null && sellData.containsKey('error')) {
-        _errorMessage = 'Rate limit exceeded. Please try again later.';
-        _stockReturn = null;
-      } else if (purchaseData != null && sellData != null) {
-        final purchasePrice = (double.parse(purchaseData['2. high']) + double.parse(purchaseData['3. low'])) / 2;
-        final sellPrice = (double.parse(sellData['2. high']) + double.parse(sellData['3. low'])) / 2;
+      } else {
+        final purchasePrice = purchaseData['close'];
+        final sellPrice = sellData['close'];
 
         final profitOrLoss = (sellPrice - purchasePrice) * quantity;
 
@@ -49,9 +46,6 @@ class StockProvider with ChangeNotifier {
         );
 
         _errorMessage = null;
-      } else {
-        _errorMessage = 'Failed to fetch stock data for calculation.';
-        _stockReturn = null;
       }
     } catch (e) {
       _errorMessage = 'Error calculating stock return: $e';
